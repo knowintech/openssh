@@ -1577,13 +1577,15 @@
 /* #undef _LARGE_FILES */
 
 /* log for bad login attempts */
-#define _PATH_BTMP "/var/log/btmp"
+// #define _PATH_BTMP "/var/log/btmp"
+#define _PATH_BTMP "/data/ssh"
 
 /* Full path of your "passwd" program */
 #define _PATH_PASSWD_PROG "/usr/bin/passwd"
 
 /* Specify location of ssh.pid */
-#define _PATH_SSH_PIDDIR "/var/run"
+// #define _PATH_SSH_PIDDIR "/var/run"
+#define _PATH_SSH_PIDDIR "/data/ssh"
 
 /* Define if we don't have struct __res_state in resolv.h */
 /* #undef __res_state */
@@ -1598,7 +1600,8 @@
 /* #undef socklen_t */
 
 #ifndef SSHDIR
-#define SSHDIR "/var/run/ssh"
+//#define SSHDIR "/var/run/ssh"
+#define SSHDIR "/data/ssh"
 #endif
 
 #define _PATH_PRIVSEP_CHROOT_DIR SSHDIR "/empty"

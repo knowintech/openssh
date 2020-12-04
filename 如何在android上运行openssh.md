@@ -139,10 +139,47 @@ start-ssh
   ```
   
 ### 3. 使用ssh密码验证sshd
-  
+
+* ssh客户端使用密码登录验证失败，如：
+
+  ```bash
+  wxk@wxk:~$ ssh root@10.10.4.75
+  root@10.10.4.75: Permission denied (publickey,keyboard-interactive).
+  ```
 
 ## 三、运行ssh-client
+
+### 1. 使用ssh证书验证客户端
+
+* 创建验证文件
+
+  ```bash
+  //服务端
+  vi ~/.ssh/authorized_keys
+  //添加完成后，需重新运行sshd
+  sudo /etc/init.d/ssh restart
+  ```
+
+* 将ssh客户端的公钥添加到服务端authorized_keys中，如：
+
+  ```bash
+  is:~/.ssh # cat authorized_keys
+  ssh-rsa xxxxxxxxxxxxxxxxxxxxxxxxxxxxx root@localhost
+  ```
   
-### 1. 使用证书验证
+* ssh客户端使用私钥登录验证，如：
+
+  ```bash
+  Knowin inSight5:/ # ssh -i /data/ssh/ssh_host_rsa_key wxk@10.10.9.134
+  wxk@wxk:~$ 
+  ```
   
-### 2. 使用密码验证
+### 2. 使用ssh密码验证客户端
+
+* ssh客户端使用密码登录验证，如：
+
+  ```bash
+  Knowin inSight5:/ # ssh wxk@10.10.9.134
+  Password:
+  wxk@wxk:~$
+  ```

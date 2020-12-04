@@ -39,7 +39,7 @@ git clone https://github.com/knowintech/openssh.git
 mmm external/openssh
 ```
 
-编译后的文件分为bin和libs:
+编译后的文件分为bin、libs和etc/ssh:
 
 * bin文件
 
@@ -72,6 +72,14 @@ mmm external/openssh
   -rwxrwxr-x 1 ouyang ouyang 106440 12月  2 13:45 libz.so
   ```
 
+* etc/ssh文件
+
+  ```bash
+  wxk@wxk:~/work/src/mt8167s-9.0-sdk$ ls -l out/target/product/generic/system/etc/ssh/
+  total 4
+  -rw-rw-r-- 1 wxk wxk 3336 12月  3 19:54 sshd_config
+  ```
+
 ### 4. 拷贝到android系统中
 
 * 拷贝bin文件
@@ -84,6 +92,12 @@ mmm external/openssh
 
   ```bash
   adb push out/target/product/generic/symbols/system/lib/* /system/lib/
+  ```
+
+* 拷贝etc/ssh文件
+
+  ```bash
+  adb push out/target/product/generic/symbols/system/etc/ssh/sshd_config /system/etc/ssh/
   ```
 
 ### 5. 在android文件系统中为ssh建立目录
@@ -101,12 +115,13 @@ mkdir /data/ssh/empty
 start-ssh
 ```
 
-### 2. 使用ssh证书验证客户端
+### 2. 使用ssh证书验证sshd
 
 * 创建验证文件
 
   ```bash
   vi /data/ssh/authorized_keys
+  //添加完成后，需重新运行sshd
   ```
 
 * 将ssh客户端的公钥添加到authorized_keys中，如：
@@ -115,8 +130,17 @@ start-ssh
   is:/data/ssh # cat authorized_keys
   ssh-rsa xxxxxxxxxxxxxxxxxxxxxxxxxxxxx ouyang@ubuntu
   ```
-### 3. 使用ssh密码验证客户端
   
+* ssh客户端使用私钥登录验证，如：
+
+  ```bash
+  wxk@wxk:~$ ssh -i .ssh/id_rsa root@10.10.4.75
+  :/ # 
+  ```
+  
+### 3. 使用ssh密码验证sshd
+  
+
 ## 三、运行ssh-client
   
 ### 1. 使用证书验证

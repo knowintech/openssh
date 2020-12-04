@@ -112,3 +112,11 @@ start-ssh
   is:/data/ssh # cat authorized_keys
   ssh-rsa xxxxxxxxxxxxxxxxxxxxxxxxxxxxx ouyang@ubuntu
   ```
+  ### 3. 使用ssh密码验证客户端
+  
+  ## 三、运行ssh-client
+  
+  ### 1. 使用证书验证
+  
+  ### 2. 使用密码验证
+  

@@ -10,6 +10,9 @@
 
 ```bash
 git clone xxxx
+git checkout insight_5_v1.3_1130
+source build/envsetup.sh
+lunch aosp_arm-eng
 ```
 
 android源码的编译请见相关wiki.

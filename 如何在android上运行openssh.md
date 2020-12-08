@@ -85,19 +85,19 @@ mmm external/openssh
 * 拷贝bin文件
 
   ```
-  adb push out/target/product/generic/symbols/system/bin/* /system/bin/
+  adb push out/target/product/generic/system/bin/* /system/bin/
   ```
 
 * 拷贝lib文件
 
   ```bash
-  adb push out/target/product/generic/symbols/system/lib/* /system/lib/
+  adb push out/target/product/generic/system/lib/* /system/lib/
   ```
 
 * 拷贝etc/ssh文件
 
   ```bash
-  adb push out/target/product/generic/symbols/system/etc/ssh/sshd_config /system/etc/ssh/
+  adb push out/target/product/generic/system/etc/ssh/sshd_config /system/etc/ssh/
   ```
 
 ### 5. 在android文件系统中为ssh建立目录
